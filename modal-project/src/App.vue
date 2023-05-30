@@ -1,7 +1,18 @@
 <template>
   <div>
     <h1>{{ title }}</h1>
-    <Modal :header="header" :array="array" theme="sale" />
+    <p>Welcome...</p>
+    <div v-if="showModal">
+      <Modal @close="toggleModal">
+        <h1>WWWEEWEWOJ YES BOYS!</h1>
+        <p>OWA OWA OWA AWWWOOOOOGAAA!</p>
+        <template v-slot:links>
+          <a href="#">EEEEEEEE</a>
+          <a href="#">AAA</a>
+        </template>
+      </Modal>
+    </div>
+    <button @click="toggleModal">Open Modal</button>
   </div>
 </template>
 
@@ -14,15 +25,13 @@ export default {
   data() {
     return {
       title: "My First Vue App",
-      header: "Sign up for a giveaway!",
-      array: ["apple", 4],
+      showModal: false,
     };
   },
 
   methods: {
-    handleClick() {
-      this.$refs.name.classList.add("active");
-      this.$refs.name.focus();
+    toggleModal() {
+      this.showModal = !this.showModal;
     },
   },
 };
